@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{:C('SITE_TITLE')}</title>
+
+    <meta name="keywords" content="{:C('SITE_KTYWORDS')}">
+    <meta name="description" content="{:C('SITE_DESCRIPTION')}">
+
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+
+    <include file="Public:pubhead" />
+
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+<div id="wrapper">
+    <!--左侧导航开始-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="nav-close"><i class="fa fa-times-circle"></i>
+        </div>
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <span><img alt="image" class="img-circle" src="__ADMIN_PUBLIC__img/profile_small.jpg" /></span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                               <span class="block m-t-xs"><strong class="font-bold">{$admin_name}</strong></span>
+                                <span class="text-muted text-xs block">{$admin_levelname}<b class="caret"></b></span>
+                                </span>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="{:U('/idoadm/user/logout')}">安全退出</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">ido
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-home"></i> <span class="nav-label">商品</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="{:U('/idoadm/goods/index')}">商品列表</a>
+                        </li>
+                        <li><a class="J_menuItem" href="{:U('/idoadm/goods/goodsadd')}">新增商品</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-table"></i> <span class="nav-label">分类</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="{:U('/idoadm/category/index')}">分类列表</a>
+                        </li>
+                        <li><a class="J_menuItem" href="{:U('/idoadm/category/cateadd')}">新增分类</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">留言</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="{:U('/idoadm/msg/index')}">留言列表</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">设置</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="{:U('/idoadm/sys/banner')}">广告位</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <eq name="admin_level" value="1">
+                <li>
+                    <a href="#"><i class="fa fa-user"></i> <span class="nav-label">用户</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="{:U('/idoadm/user/index')}">用户列表</a>
+                        <li><a class="J_menuItem" href="{:U('/idoadm/user/useradd')}">新增用户</a>
+                        </li>
+                    </ul>
+                </li>
+                </eq>
+
+            </ul>
+        </div>
+    </nav>
+    <!--左侧导航结束-->
+
+    <!--右侧部分开始-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    <!--<form role="search" class="navbar-form-custom" method="post" action="http://www.zi-han.net/theme/hplus/search_results.html">-->
+                        <!--<div class="form-group">-->
+                            <!--<input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">-->
+                        <!--</div>-->
+                    <!--</form>-->
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-envelope"></i> <span class="label label-warning">{$msg_num}</span>
+                        </a>
+                        <notempty name="msg_list">
+                        <ul class="dropdown-menu dropdown-messages">
+                            <volist name="msg_list" id="ml">
+                            <li class="m-t-xs">
+                                <div class="dropdown-messages-box">
+                                    <a href="javascript:void(0)" class="pull-left">
+                                        <img alt="image" class="img-circle" src="__ADMIN_PUBLIC__img/a7.jpg">
+                                    </a>
+                                    <div class="media-body">
+                                        <small class="pull-right"><?php
+                                        $level_time = time() - $ml['ct'];
+                                        if($level_time <= 60) echo '1分钟内';
+                                        else if($level_time > 60 && $level_time <= 3600) echo '1小时内';
+                                        else if($level_time > 3600 && $level_time <= 86400) echo '1天内';
+                                        else echo '一天以上';
+                                        ?></small>
+                                        <strong><empty name="ml.name">匿名<else />{$ml.name}</empty></strong> {$ml.content}
+                                        <br>
+                                        <small class="text-muted">{$ml.ct|date="Y-m-d H:i:s",###}</small>
+                                    </div>
+                                </div>
+                            </li>
+                                <li class="divider"></li>
+                            </volist>
+                            <li>
+                                <div class="text-center link-block">
+                                    <a class="J_menuItem" href="{:U('/idoadm/msg/index')}">
+                                        <i class="fa fa-envelope"></i> <strong> 查看所有消息</strong>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                        </notempty>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="row content-tabs">
+            <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i>
+            </button>
+            <nav class="page-tabs J_menuTabs">
+                <div class="page-tabs-content">
+                    <a href="javascript:;" class="active J_menuTab" data-id="index_v1.html">首页</a>
+                </div>
+            </nav>
+            <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
+            </button>
+            <div class="btn-group roll-nav roll-right">
+                <button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作<span class="caret"></span>
+
+                </button>
+                <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                    <li class="J_tabShowActive"><a>定位当前选项卡</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="J_tabCloseAll"><a>关闭全部选项卡</a>
+                    </li>
+                    <li class="J_tabCloseOther"><a>关闭其他选项卡</a>
+                    </li>
+                </ul>
+            </div>
+            <a href="{:U('/idoadm/user/logout')}" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+        </div>
+        <div class="row J_mainContent" id="content-main">
+            <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="" frameborder="0" data-id="index_v1.html" seamless></iframe>
+        </div>
+        <div class="footer">
+            <div class="pull-right">&copy; <?= Date('Y')?> <a href="" target="_blank"></a>
+            </div>
+        </div>
+    </div>
+    <!--右侧部分结束-->
+</div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ido</title>
+<link rel="stylesheet" type="text/css" href="__HOME_PUBLIC__css/css.css">
+<link rel="stylesheet" type="text/css" href="__HOME_PUBLIC__css/media-queries.css">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta name="renderer" content="webkit">
+</head>
+<body>
+
+<!--star_banner-->
+<div class="i_banner row">
+<div class="zoombg" style="background-image: url(__HOME_PUBLIC__images/i_banner/pro.jpg);"></div>
+</div>
+<!--end_banner-->
+
+<div class="header">
+<div class="w_1200">
+<div class="logo"><a href="index.html"><img src="__HOME_PUBLIC__images/logo.png" alt="ido"></a></div>
+<!--end标志-->
+
+<div class="tnav" id="slideNav">
+<ul class="tnavlist">
+    <li><a href="{:U('/home/index/index')}">Home</a></li>
+    <li><a href="{:U('/home/index/about')}">About</a></li>
+    <li class="current_nav"><a href="{:U('/home/index/product')}">Product</a></li>
+    <li><a href="{:U('/home/index/contact')}">Contact</a></li>
+</ul>
+<i class="tavline" id="slideNavLine"></i>
+</div>
+<!--end导航-->
+
+<!--star菜单按钮-->
+<div class="nav_btn">
+<i></i>
+<i></i>
+<i></i>
+</div>
+<!--end菜单按钮-->
+
+</div>
+<!--end宽度-->
+</div>
+<!--end头文件-->
+
+
+<h4 class="w_1200 i_th blue_text">PRoduct</h4>
+
+
+<div class="i_center w_1200 cf2">
+<div class="l l_240 white_bj h_560">
+<ul class="pro_nav">
+    <volist name="cate1" id="c1">
+        <li <eq name="c1.id" value="$catid1">class="active"</eq>><a href="{:U('/home/index/product',['catid1' => $c1['id']])}">{$c1.cate_name}</a></li>
+    </volist>
+</ul>
+</div>
+<!--end左边-->
+<div class="r_940 r white_bj h_560">
+<div class="r_w_box">
+<dl class="tab_nav pro_tab_nav cf2">
+    <dd>
+        <empty name="cate2">
+            暂无分类
+        <else />
+            <volist name="cate2" id="c2">
+                <a <eq name="c2.id" value="$catid2">class="tab_light"</eq> href="{:U('/home/index/product',['catid2' => $c2['id'],'catid1' => $catid1])}">{$c2.cate_name}</a>
+            </volist>
+        </empty>
+    </dd>
+</dl>
+
+<div class="tab_box">
+
+<!--star动画-->
+<div class="pro_flash">
+<ul class="bd">
+    <empty name="goods">
+        暂无商品
+    <else />
+        <volist name="goods" id="g">
+            <li><img src="{$g.img}" alt="{$g.title}"></li>
+        </volist>
+    </empty>
+</ul>
+<notempty name="goods">
+    <ul class="hd"></ul>
+    <div class="btn btn_l prev transition_a">&lt;</div>
+    <div class="btn btn_r next transition_a">&gt;</div>
+</notempty>
+</div>
+
+
+</div>
+<!--end标签内容-->
+</div>
+<!--end右边宽度-->
+</div>
+<!--end右边-->
+</div>
+<!--end中间区域-->
+
+
+
+<div class="cf2 footer">
+<dl class="cf2 footer w_1200">
+<dt class="l">Copyright &copy; IDO Sportwagen Hannover GmbH.</dt>
+<dd class="r">Mail :  <a href="mailto:sales1@ido-wm.com">sales1@ido-wm.com</a><span class="m_l">Tel :  +86-755-27041321</span></dd>
+</dl>
+</div>
+<!--end文件底-->
+
+
+
+<script type="text/javascript" src="__HOME_PUBLIC__js/jquery-1.7.1.min.js"></script>
+
+
+
+<script type="text/javascript" src="__HOME_PUBLIC__js/jquery.SuperSlide.2.1.2.js"></script>
+<script type="text/javascript" src="__HOME_PUBLIC__js/tool.js"></script>
+
+
+</body>
+</html>

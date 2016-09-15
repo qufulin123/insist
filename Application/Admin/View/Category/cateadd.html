@@ -1,0 +1,28 @@
+<include file="Public:pubhead" />
+<form action="{:U('/idoadm/category/docateadd')}" method="post">
+    <input type="hidden" name="cateid" value="{$cateid}">
+    <input type="hidden" name="id" value="{$id}">
+    <input type="hidden" name="uri" value="{$uri}">
+
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>分类操作</h5>
+            </div>
+            <div class="ibox-content">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">分类名称 * ：</label>
+                        <div class="col-sm-5">
+                            <input type="text" placeholder="分类名" class="form-control" name="cate_name" required value="{$info.cate_name}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-4">
+                            <button class="btn btn-sm btn-white" type="submit">保存</button>
+                            <button class="btn btn-white" type="submit" onclick="javascript:history.back()">取消</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</form>

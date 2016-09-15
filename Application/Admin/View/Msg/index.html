@@ -1,0 +1,68 @@
+<include file="Public:pubhead" />
+
+<div class="col-sm-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h6 class="pull-left">选择状态:</h6>
+
+            <form action="" method="get">
+                <div class="col-sm-2 pull-left">
+                <select name="status" class="form-control col-sm-2">
+                    <option value="0">全部</option>
+                    <option value="1" <eq name="status" value="1">selected</eq>>未处理</option>
+                    <option value="2" <eq name="status" value="2">selected</eq>>已处理</option>
+                </select>
+                </div>
+                <button class="btn btn-sm btn-primary pull-left">筛选</button>
+            </form>
+
+        </div>
+        <div class="ibox-content">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>邮箱</th>
+                    <th>内容</th>
+                    <th>留言时间</th>
+                    <th>状态</th>
+                    <th>ip</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <notempty name="list">
+                    <volist name="list" id="l">
+                        <tr>
+                            <td>{$key+1}</td>
+                            <td>{$l.name}</td>
+                            <td>{$l.email}</td>
+                            <td>{$l.content|cutstr}</td>
+                            <td>{$l.ct|date="Y-m-d H:i:s",###}</td>
+                            <td><eq name="l.status" value="2">已处理<else />未处理</eq></td>
+                            <td>{$l.ip}</td>
+                            <td class="text-navy">
+                                <eq name="l.status" value="2">
+                                <a href="{:U('/idoadm/msg/changestatus',['id' => $l['id'],'status' => 1])}">标记未处理</a> |
+                                <else />
+                                <a href="{:U('/idoadm/msg/changestatus',['id' => $l['id'],'status' => 2])}">标记已处理</a> |
+
+                                </eq>
+                                <a href="{:U('/idoadm/msg/msgdel',['id' => $l['id']])}" onclick="return confirm('是否确认删除?')">删除</a>
+                            </td>
+                        </tr>
+                    </volist>
+                    <else />
+                    <tr>
+                        <td colspan="7">暂无留言</td>
+                    </tr>
+                </notempty>
+                </tbody>
+            </table>
+            <div>
+                {$page}
+            </div>
+        </div>
+    </div>
+</div>

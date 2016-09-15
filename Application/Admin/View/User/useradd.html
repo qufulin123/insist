@@ -1,0 +1,68 @@
+<include file="Public:pubhead" />
+<form action="{:U('/idoadm/user/douseradd')}" class="form-horizontal" method="post">
+    <input type="hidden" name="id" value="{$id}">
+
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>用户操作</h5>
+            </div>
+            <div class="ibox-content">
+                    <div class="form-group" style="clear:both;">
+                        <label class="col-sm-2 control-label">用户名 * ：</label>
+                        <div class="col-sm-5">
+                            <input type="text" placeholder="用户名" class="form-control" name="user_name" value="{$info.user_name}" <notempty name="id">readonly</notempty>>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="clear:both;">
+                        <label class="col-sm-2 control-label">用户昵称 * ：</label>
+                        <div class="col-sm-5">
+                            <input type="text" placeholder="用户昵称" class="form-control" name="real_name" value="{$info.real_name}">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group" style="clear:both;">
+                        <label class="col-sm-2 control-label">用户密码 * ：</label>
+                        <div class="col-sm-5">
+                            <input type="password" class="form-control" name="user_pass" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="clear:both;">
+                        <label class="col-sm-2 control-label">重复密码 * ：</label>
+                        <div class="col-sm-5">
+                            <input type="password" class="form-control" name="user_pass2" value="">
+                        </div>
+                    </div>
+                    <notempty name="id">
+                    <div class="form-group" style="clear:both;">
+                        <label class="col-sm-2 control-label">原密码 * ：</label>
+                        <div class="col-sm-5">
+                            <input type="password" class="form-control" name="old_pass" value="">
+                        </div>
+                    </div>
+                    </notempty>
+
+                    <div class="form-group" style="clear:both;">
+                        <label class="col-sm-2 control-label">账户等级 * ：</label>
+                        <div class="col-sm-5">
+                            <select name="level" id="">
+                                <option value="2" <eq name="info.level" value="2">selected</eq>>管理员</option>
+                                <option value="1" <eq name="info.level" value="1">selected</eq>>超级管理员</option>
+                            </select>
+                        </div>
+                        <label class="control-label">注意：请保证系统至少有一个超级管理员</label>
+                    </div>
+
+                    <div class="form-group" style="clear:both;">
+                        <div class="col-sm-offset-2 col-sm-4">
+                            <button class="btn btn-sm btn-white" type="submit">保存</button>
+                            <button class="btn btn-white" type="submit" onclick="javascript:history.back()">取消</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</form>

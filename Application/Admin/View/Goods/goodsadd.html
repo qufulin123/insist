@@ -1,0 +1,87 @@
+<include file="Public:pubhead" />
+<form action="{:U('/idoadm/goods/dogoodsadd')}" class="form-horizontal" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{$id}">
+
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>商品操作</h5>
+            </div>
+            <div class="ibox-content">
+                    <div class="form-group" style="clear:both;">
+                        <label class="col-sm-2 control-label">商品名称 * ：</label>
+                        <div class="col-sm-5">
+                            <input type="text" placeholder="商品名" class="form-control" name="title" value="{$info.title}" required>
+                        </div>
+                    </div>
+                    <div class="form-group" style="clear:both;">
+                        <label class="col-sm-2 control-label">商品分类 * ：</label>
+                        <div class="col-sm-5">
+                            <div class="col-sm-6" style="padding:0px;">
+                                <select name="cate1" id="cate1" class="form-control"></select>
+                            </div>
+                            <div class="col-sm-5 pull-right" style="padding:0px;">
+                                <select name="cate2" id="cate2" class="form-control"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group" style="clear:both;">
+                        <label class="col-sm-2 control-label">商品图片 * ：</label>
+                        <div class="col-sm-5">
+                            <notempty name="info.img">
+                                <img src="{$info.img}" alt="" style="width:200px;height:100px;">
+                                <input type="hidden" name="img" value="{$info.img}">
+                            </notempty>
+                            <input type="file" class="form-control" name="uploadimg" <empty name="info.img">required</empty>>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group" style="clear:both;">
+                        <div class="col-sm-offset-2 col-sm-4">
+                            <button class="btn btn-sm btn-white" type="submit">保存</button>
+                            <button class="btn btn-white" type="submit" onclick="javascript:history.back()">取消</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $(function(){
+
+        var cateinfo = {$cateinfo},
+                cate1 = $('#cate1'),
+                cate1_val = '{$info.catid1}',
+                cate2_val = '{$info.catid2}';
+
+        cate1.append('<option value="">请选择一级分类</option>');
+        $.each(cateinfo,function(idx,ele){
+            cate1.append('<option value="'+ele.id+'" '+(cate1_val == ele.id?'selected' : '')+'>'+ele.cate_name+'</option>');
+        })
+        $('#cate1').change(function(){
+            var idx = $(this).val(),cate2 = $('#cate2');
+            cate2.empty();
+            cate2.append('<option value="">请选择二级分类</option>');
+            $.each(cateinfo,function(i,ele){
+                if(ele.id == idx){
+                    $.each(ele.child,function(i,cele){
+                        cate2.append('<option value="'+cele.id+'"'+(cate2_val == cele.id?'selected' : '')+'>'+cele.cate_name+'</option>');
+                    })
+                }
+            })
+        })
+        if(cate1_val){
+            var idx = $('#cate1').val(),cate2 = $('#cate2');
+            cate2.empty();
+            cate2.append('<option value="">请选择二级分类</option>');
+            $.each(cateinfo,function(i,ele){
+                if(ele.id == idx){
+                    $.each(ele.child,function(i,cele){
+                        cate2.append('<option value="'+cele.id+'"'+(cate2_val == cele.id?'selected' : '')+'>'+cele.cate_name+'</option>');
+                    })
+                }
+            })
+        }
+    })
+</script>

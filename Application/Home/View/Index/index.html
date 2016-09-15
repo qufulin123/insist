@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ido</title>
+<link rel="stylesheet" type="text/css" href="__HOME_PUBLIC__css/css.css">
+<link rel="stylesheet" type="text/css" href="__HOME_PUBLIC__css/media-queries.css">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta name="renderer" content="webkit">
+</head>
+<body>
+
+<!--star_banner-->
+<div class="main_visual">
+<div class="flicking_con">
+    <volist name="list" id="b">
+        <a href="javascript:void(0)">{$key+1}</a>
+    </volist>
+</div>
+<div class="main_image">
+<ul>
+    <volist name="list" id="b">
+        <li><span style="background-image:url('{$b.img}')"></span></li>
+    </volist>
+</ul>
+<a href="javascript:;" id="btn_prev"></a>
+<a href="javascript:;" id="btn_next"></a>
+</div>
+</div>
+<!--end_banner-->
+
+<div class="header">
+<div class="w_1200">
+<div class="logo"><a href="index.html"><img src="__HOME_PUBLIC__images/logo.png" alt="ido"></a></div>
+<!--end标志-->
+
+<div class="tnav" id="slideNav">
+<ul class="tnavlist">
+<li class="current_nav"><a href="{:U('/home/index/index')}">Home</a></li>
+<li><a href="{:U('/home/index/about')}">About</a></li>
+<li><a href="{:U('/home/index/product')}">Product</a></li>
+<li><a href="{:U('/home/index/contact')}">Contact</a></li>
+</ul>
+<i class="tavline" id="slideNavLine"></i>
+</div>
+<!--end导航-->
+
+<!--star菜单按钮-->
+<div class="nav_btn">
+<i></i>
+<i></i>
+<i></i>
+</div>
+<!--end菜单按钮-->
+
+</div>
+<!--end宽度-->
+</div>
+<!--end头文件-->
+
+
+
+<ul class="h_class w_1200 cf2">
+<li>
+    <div class="box">
+    <img src="__HOME_PUBLIC__images/pic/01.jpg" alt="{$cate.0.cate_name}">
+        <h4 class="blue_text">{$cate.0.cate_name}</h4>
+        <div class="btn">
+            <a href="{:U('/home/index/product',['catid1' => $cate[0]['id']])}" class="more_btn"><span>MEHR ERFAHREN</span></a>
+        </div>
+    </div>
+</li>
+
+<li>
+    <div class="box">
+        <img src="__HOME_PUBLIC__images/pic/02.jpg" alt="{$cate.1.cate_name}">
+        <h4 class="blue_text">{$cate.1.cate_name}</h4>
+        <div class="btn">
+            <a href="{:U('/home/index/product',['catid1' => $cate[1]['id']])}" class="more_btn"><span>MEHR ERFAHREN</span></a>
+        </div>
+    </div>
+</li>
+<li>
+    <div class="box">
+        <img src="__HOME_PUBLIC__images/pic/03.jpg" alt="Other"><h4 class="blue_text">Other</h4>
+        <div class="btn">
+            <a href="{:U('/home/index/product')}" class="more_btn"><span>MEHR ERFAHREN</span></a>
+        </div>
+    </div>
+</li>
+</ul>
+
+
+
+<div class="cf2 footer">
+<dl class="cf2 footer w_1200">
+<dt class="l">Copyright &copy; IDO Sportwagen Hannover GmbH.</dt>
+<dd class="r">Mail :  <a href="mailto:sales1@ido-wm.com">sales1@ido-wm.com</a><span class="m_l">Tel :  +86-755-27041321</span></dd>
+</dl>
+</div>
+<!--end文件底-->
+
+
+
+<script type="text/javascript" src="__HOME_PUBLIC__js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__HOME_PUBLIC__js/jquery.event.drag-1.5.min.js"></script>
+<script type="text/javascript" src="__HOME_PUBLIC__js/jquery.touchSlider.js"></script>
+<script type="text/javascript" src="__HOME_PUBLIC__js/banner.js"></script>
+
+
+<script type="text/javascript" src="__HOME_PUBLIC__js/jquery.SuperSlide.2.1.2.js"></script>
+<script type="text/javascript" src="__HOME_PUBLIC__js/tool.js"></script>
+
+
+</body>
+</html>

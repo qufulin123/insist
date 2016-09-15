@@ -1,0 +1,48 @@
+<include file="Public:pubhead" />
+
+<div class="col-sm-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+
+            <div class="ibox-tools">
+                <a href="{:U('/idoadm/category/cateadd',['cateid' => $cateid])}?uri={$_SERVER['REQUEST_URI']}" class="btn btn-primary btn-sm">新增</a>
+                <notempty name="cateid">
+                <button class="btn btn-sm btn-success" onclick="javascript:history.back()">返回</button>
+                </notempty>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>分类名</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <notempty name="list">
+                    <volist name="list" id="l">
+                        <tr>
+                            <td>{$key+1}</td>
+                            <td>{$l.cate_name}</td>
+                            <td>{$l.operator_name}</td>
+                            <td class="text-navy">
+                                <a href="{:U('/idoadm/category/cateadd',['id' => $l['id'],'cateid' => $l['pid'] ])}?uri={$_SERVER['REQUEST_URI']}">编辑</a> |
+                                <a href="{:U('/idoadm/category/index',['cateid' => $l['id']])}">查看子分类</a>
+                            </td>
+                        </tr>
+                    </volist>
+                    <else />
+                    <tr>
+                        <td colspan="4">暂无分类,您可以点击右上角新增</td>
+                    </tr>
+                </notempty>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

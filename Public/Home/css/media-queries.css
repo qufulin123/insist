@@ -1,0 +1,110 @@
+
+@media screen and (max-width: 1280px) and (min-width:100px) {
+body{ font-size:90%;}
+.w_1200{ width:auto; margin-left:2em; margin-right:2em; }
+
+}
+
+@media screen and (max-width: 920px) and (min-width:320px) {
+
+.w_1200{ margin-left:1em; margin-right:1em;}
+.tnavlist li{ margin-left:1em;}
+.logo{ padding-top:1em;}
+.logo a{ display:block; width:8em;}
+.logo img{ max-width:100%; width:100%\9;*width:100%;}
+
+/*动画*/
+.main_visual{ height:500px;}
+
+/*分类*/
+.h_class h4{ font-size:1.5em;}
+
+}
+
+@media screen and (max-width: 800px){
+/*头文件*/
+.header{ }
+/*分类*/
+.h_class{ margin-bottom:0;}
+.h_class li{ margin:0 0 3em 0; float:none; width:100%;}
+.h_class .box img{ width:100%;}
+.h_class h4{ padding-top:0; top:40%; font-size:2.5em;}
+.more_btn{ font-size:1.4em;}
+.h_class .btn{ bottom:2.8em;}
+/*文件底*/
+.footer{ margin-top:0; text-align:center;}
+.footer .footer{ padding:1.4em 0;}
+.footer dt,.footer dd{ float:none !important; width:100%;}
+/*产品分类左导航*/
+.pro_nav{ margin:1.5em .5em;}
+
+}
+
+
+@media screen and (max-width: 640px) {
+/*头文件*/
+.header{ height:4.2em; }
+.logo { padding-top:.6em;}
+.logo a{ width:6.5em;}
+
+/*主导航*/
+.nav_btn{ display:block;}
+.tnav{ z-index:888; display:none; position:absolute; top:-.15em; right:0; width:100%; text-align:center; background-color:rgba(0,0,0,.5); height:auto; font-size:1.4em; line-height:2.5em;background:url(../images/icon/black_4.png) repeat\9;*background:url(../images/icon/black_4.png) repeat;}	
+.tnavlist li{ float:none; margin:0; width:100%;}
+.tnavlist li a{ position:inherit; display:block; float:none; width:100%; padding:0; height:2.5em;}
+.tnavlist li a:focus{ background-color:#5dc2d0; color:#fff; /*transition:all .2s;-webkit-transition:all .2s*/;}
+.tavline{ display:none;}
+
+/*动画*/
+.main_visual{ height:320px;}
+/*分类*/
+.h_class{ margin:1em 1em;}
+.h_class .box{ margin:0;}
+.h_class li{ margin-bottom:1em;}
+.h_class h4{ top:20%;}
+
+/*内页banner*/
+.i_banner{ height:240px;}
+/*内页标题*/
+.i_th{ margin:.5em 0; text-align:center;}
+
+/*关于我们*/
+.l_50{ width:100%; margin:0 0 1em 0;}
+.r_contact dd{ text-align:center;}
+
+.i_center{ margin-bottom:2em;}
+
+/*产品分类*/
+.l_240,.r_940{ float:none; width:100%;}
+.h_560{ height:auto;}
+/*左分类导航*/
+.pro_nav{ padding:1em 1em; margin:0 0 1em 0;}
+.pro_nav li{ margin:.5em 0;}
+/*标签导航*/
+.pro_tab_nav dd a{ margin:.5em 0.16%; box-sizing:border-box; width:30%; text-align:center;}
+/*标签内容动画*/
+.pro_flash .btn_l{ left:0;}
+.pro_flash .btn_r{ right:0;}
+
+}
+
+/*6+*/
+@media(min-device-width:414px)and(max-device-width:736px)and(-webkit-min-device-pixel-ratio:3){
+.h_class h4{ font-size:2.4em; top:30%;}
+.h_class .btn{ bottom:2.4em;}
+.more_btn{ font-size:1.5em;}	
+}
+
+/*6*/
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){ 
+.h_class h4{ font-size:1.5em; top:25%;}
+.h_class .btn{ bottom:1.2em;}
+.more_btn{ font-size:1em;}	
+}
+
+/*4 4s*/
+@media only screen and (device-height :480px) and (-webkit-device-pixel-ratio:2){
+.h_class h4{ font-size:1.5em; top:25%;}
+.h_class .btn{ bottom:1.2em;}
+.more_btn{ font-size:1em;}
+}

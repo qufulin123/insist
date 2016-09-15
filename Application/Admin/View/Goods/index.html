@@ -1,0 +1,100 @@
+<include file="Public:pubhead" />
+
+<div class="col-sm-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h6 class="pull-left">选择分类:</h6>
+
+            <form action="" method="get">
+                <div class="col-sm-2 pull-left">
+                <select name="cate1" id="cate1" class="form-control col-sm-2"></select>
+                </div>
+                <div class="col-sm-2 pull-left">
+                <select name="cate2" id="cate2" class="form-control col-sm-2"></select>
+                </div>
+                <button class="btn btn-sm btn-primary pull-left">搜索</button>
+                <a href="{:U('/idoadm/goods/goodsadd')}" class="btn btn-primary btn-sm pull-right">新增商品</a>
+            </form>
+
+        </div>
+        <div class="ibox-content">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>商品名</th>
+                    <th>商品图</th>
+                    <th>创建时间</th>
+                    <th>修改时间</th>
+                    <th>创建人</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <notempty name="list">
+                    <volist name="list" id="l">
+                        <tr>
+                            <td>{$key+1}</td>
+                            <td>{$l.title}</td>
+                            <td><img src="{$l.img}" alt="{$l.title}" style="width:100px;"></td>
+                            <td>{$l.ct|date="Y-m-d H:i:s",###}</td>
+                            <td><notempty name="l.mt">
+                                {$l.mt|date="Y-m-d H:i:s",###}
+                            </notempty></td>
+                            <td>{$l.operatorname}</td>
+                            <td class="text-navy">
+                                <a href="{:U('/idoadm/goods/goodsadd',['id' => $l['id']])}">编辑</a> |
+                                <a href="{:U('/idoadm/goods/goodsdel',['id' => $l['id']])}" onclick="return confirm('是否确认删除?')">删除</a>
+                            </td>
+                        </tr>
+                    </volist>
+                    <else />
+                    <tr>
+                        <td colspan="4">暂无商品,您可以点击右上角新增按钮</td>
+                    </tr>
+                </notempty>
+                </tbody>
+            </table>
+            <div>
+                {$page}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        var cateinfo = {$cateinfo},
+                cate1 = $('#cate1'),
+                cate1_val = '{$cate1}',
+                cate2_val = '{$cate2}';
+
+        cate1.append('<option value="">请选择一级分类</option>');
+        $.each(cateinfo,function(idx,ele){
+            cate1.append('<option value="'+ele.id+'" '+(cate1_val == ele.id?'selected' : '')+'>'+ele.cate_name+'</option>');
+        })
+        $('#cate1').change(function(){
+            var idx = $(this).val(),cate2 = $('#cate2');
+            cate2.empty();
+            cate2.append('<option value="">请选择二级分类</option>');
+            $.each(cateinfo,function(i,ele){
+                if(ele.id == idx){
+                    $.each(ele.child,function(i,cele){
+                        cate2.append('<option value="'+cele.id+'"'+(cate2_val == cele.id?'selected' : '')+'>'+cele.cate_name+'</option>');
+                    })
+                }
+            })
+        })
+        if(cate1_val){
+            var idx = $('#cate1').val(),cate2 = $('#cate2');
+            cate2.empty();
+            cate2.append('<option value="">请选择二级分类</option>');
+            $.each(cateinfo,function(i,ele){
+                if(ele.id == idx){
+                    $.each(ele.child,function(i,cele){
+                        cate2.append('<option value="'+cele.id+'"'+(cate2_val == cele.id?'selected' : '')+'>'+cele.cate_name+'</option>');
+                    })
+                }
+            })
+        }
+    })
+</script>
