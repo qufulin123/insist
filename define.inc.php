@@ -9,4 +9,3 @@ define('HOME_PUBLIC', __IMAGESERVER__."Public/Home/");
 //附件上传目录
 define('UPLOAD_URL'	, __IMAGESERVER__."Public/upload/pic/");
 define('UPLOAD_PATH'	, __SITEPATH__."Public/upload/pic/");
-

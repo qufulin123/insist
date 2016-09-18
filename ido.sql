@@ -15,7 +15,8 @@
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
-
+CREATE Database ido;
+use ido;
 
 -- ----------------------------
 --  Table structure for `ido_admin_user`
