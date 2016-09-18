@@ -15,6 +15,8 @@
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
+
+
 -- ----------------------------
 --  Table structure for `ido_admin_user`
 -- ----------------------------
@@ -29,7 +31,7 @@ CREATE TABLE `ido_admin_user` (
   `last_login` int(11) unsigned DEFAULT NULL,
   `status` tinyint(3) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `ido_admin_user`
@@ -52,7 +54,7 @@ CREATE TABLE `ido_banner` (
   `mt` int(11) NOT NULL,
   `is_del` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `ido_category`
@@ -66,7 +68,7 @@ CREATE TABLE `ido_category` (
   `mt` int(11) DEFAULT NULL,
   `operator` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `ido_goods_info`
@@ -83,7 +85,7 @@ CREATE TABLE `ido_goods_info` (
   `catid1` int(10) unsigned NOT NULL,
   `catid2` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `ido_msg`
@@ -100,6 +102,6 @@ CREATE TABLE `ido_msg` (
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '1 正常 2 已处理',
   `is_del` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 SET FOREIGN_KEY_CHECKS = 1;

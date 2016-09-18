@@ -1,0 +1,7 @@
+1.打开项目中Application/Common/Conf/config.php
+	将手动配置数据库部分配置完成
+2.mysql中运行ido.sql 建立数据库及数据表
+3.部署完成 接下来到nginx或者apache中配置虚拟目录即可
+前台地址 http://yourdomain.com
+后台地址 http://yourdomain.com/idoadm
+后台默认账号 账号：admin   密码:test 进入后请及时修改密码或者重新建立新的管理员账号

@@ -10,7 +10,7 @@ class AdminBaseController extends \Home\Controller\BaseController {
         parent::__construct();
         setLastUrl();
 
-        if(!in_array(__ACTION__,C('not_check_action'))){
+        if(!in_array(strtolower(__ACTION__),C('not_check_action'))){
             if(session('?admin_uid') && session('?admin_uname') && session('?admin_level')){
                 $this->admin_id = session('admin_uid');
                 $this->admin_level = intval(session('admin_level'));
