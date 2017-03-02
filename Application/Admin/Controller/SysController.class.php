@@ -78,7 +78,8 @@ class SysController extends AdminBaseController {
             $r = $this->m->where(['id' => $id])->save($data);
         }else{
             $data['ct'] = time();
-            $r = $this->m->add($data);
+            $data['mt'] = 0;
+            $r = $this->m->data($data)->add();
         }
 
         if($r)

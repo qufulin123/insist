@@ -9,7 +9,7 @@ class IndexController extends HomeBaseController {
         $list = D('banner')->where($where)->order('mt desc,id desc')->select();
         $this->assign('list',$list);
         //读取2个分类
-        $cate = D('category')->where('pid = 0')->order('mt desc,id desc')->limit(2)->select();
+        $cate = D('category')->where('pid = 0')->order('id asc')->limit(3)->select();
         $this->assign('cate',$cate);
         $this->display();
     }
@@ -19,11 +19,11 @@ class IndexController extends HomeBaseController {
         $catid2 = I('catid2',0,'int');
 
         //读取一级分类
-        $cate1 = D('category')->where(['pid' => 0])->order('mt desc,id desc')->limit(6)->select();
+        $cate1 = D('category')->where(['pid' => 0])->order('id asc')->limit(6)->select();
         if(empty($catid1))
             $catid1 = isset($cate1[0]['id']) ? $cate1[0]['id'] : 0;
         //根据一级分类Id 读取二级
-        $cate2 = D('category')->where(['pid' => $catid1])->order('mt desc,id desc')->limit(10)->select();
+        $cate2 = D('category')->where(['pid' => $catid1])->order('id asc')->limit(10)->select();
         if(empty($catid2))
             $catid2 = isset($cate2[0]['id']) ? $cate2[0]['id'] : 0;
         //根据分类 查询商品

@@ -61,33 +61,17 @@
 
 
 <ul class="h_class w_1200 cf2">
-<li>
-    <div class="box">
-    <img src="__HOME_PUBLIC__images/pic/01.jpg" alt="{$cate.0.cate_name}">
-        <h4 class="blue_text">{$cate.0.cate_name}</h4>
-        <div class="btn">
-            <a href="{:U('/home/index/product',['catid1' => $cate[0]['id']])}" class="more_btn"><span>MEHR ERFAHREN</span></a>
+    <volist name="cate" id="c">
+    <li>
+        <div class="box">
+        <img src="__HOME_PUBLIC__images/pic/0{$key+1}.jpg" alt="{$c.cate_name}">
+            <h4 class="blue_text">{$c.cate_name}</h4>
+            <div class="btn">
+                <a href="{:U('/home/index/product',['catid1' => $c['id']])}" class="more_btn"><span>MEHR ERFAHREN</span></a>
+            </div>
         </div>
-    </div>
-</li>
-
-<li>
-    <div class="box">
-        <img src="__HOME_PUBLIC__images/pic/02.jpg" alt="{$cate.1.cate_name}">
-        <h4 class="blue_text">{$cate.1.cate_name}</h4>
-        <div class="btn">
-            <a href="{:U('/home/index/product',['catid1' => $cate[1]['id']])}" class="more_btn"><span>MEHR ERFAHREN</span></a>
-        </div>
-    </div>
-</li>
-<li>
-    <div class="box">
-        <img src="__HOME_PUBLIC__images/pic/03.jpg" alt="Other"><h4 class="blue_text">Other</h4>
-        <div class="btn">
-            <a href="{:U('/home/index/product')}" class="more_btn"><span>MEHR ERFAHREN</span></a>
-        </div>
-    </div>
-</li>
+    </li>
+    </volist>
 </ul>
 
 
